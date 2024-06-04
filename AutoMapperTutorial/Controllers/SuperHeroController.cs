@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapperTutorial.Models;
 using AutoMapperTutorial.Models.DTOs;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AutoMapperTutorial.Controllers
@@ -11,7 +10,6 @@ namespace AutoMapperTutorial.Controllers
     public class SuperHeroController : ControllerBase
     {
         private static List<SuperHeroModel> heroDataBase = new List<SuperHeroModel>() {
-
             new SuperHeroModel()
             {
                 Id = 1,
@@ -51,9 +49,8 @@ namespace AutoMapperTutorial.Controllers
                 Active_City = "NewYork City",
                 isActive = false
             }
-
-
         };
+
         private readonly IMapper _mapper;
 
         public SuperHeroController(IMapper mapper)
@@ -73,20 +70,16 @@ namespace AutoMapperTutorial.Controllers
             var heroData = heroDataBase.Select(_mapper.Map<HeroDTOs>);
 
             return Ok(heroData);
-
         }
 
         [HttpPost]
         public ActionResult PostData(HeroDTOs newHero)
         {
-
             var newEntry = _mapper.Map<SuperHeroModel>(newHero);
             heroDataBase.Add(newEntry);
 
             var heroData = heroDataBase.Select(_mapper.Map<HeroDTOs>);
             return Ok(heroData);
         }
-
-
     }
 }

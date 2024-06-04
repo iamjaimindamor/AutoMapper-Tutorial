@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Data;
 
 namespace AutoMapperTutorial.Models
 {
@@ -7,6 +6,7 @@ namespace AutoMapperTutorial.Models
     {
         [Key]
         public int Id { get; set; }
+
         public string? HeroName { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
